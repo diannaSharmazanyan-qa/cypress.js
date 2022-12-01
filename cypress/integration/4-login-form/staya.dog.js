@@ -4,8 +4,8 @@ describe('Тестирование формы логина и пароля на 
         cy.visit('https://staya.dog/');
         cy.get('.header-bottom__right--link').click();
         cy.get('.auth-form__submit').should('be.disabled')
-        cy.get('.auth-form > form > [type="email"]').type('sharmazanyan00@mail.ru');
-        cy.get('.auth-form > form > [type="password"]').type('ASDfgh123');
+        cy.get('.auth-form > form > [type="email"]').type('корректный_логин');
+        cy.get('.auth-form > form > [type="password"]').type('корректный_пароль');
         cy.get('.auth-form__submit').should('not.be.disabled');
         cy.get('.auth-form__submit').click();
         cy.contains('Мои заказы');
@@ -16,8 +16,8 @@ describe('Тестирование формы логина и пароля на 
         cy.reload();
         cy.get('.header-bottom__right--link').click();
         cy.get('.auth-form__submit').should('be.disabled')
-        cy.get('.auth-form > form > [type="email"]').type('sharmazanyan00@mail.ru');
-        cy.get('.auth-form > form > [type="password"]').type('asdfgh123');
+        cy.get('.auth-form > form > [type="email"]').type('корректный_логин');
+        cy.get('.auth-form > form > [type="password"]').type('не_корректный_пароль');
         cy.get('.auth-form__submit').should('not.be.disabled');
         cy.get('.auth-form__submit').click();
         cy.contains('Невозможно войти с предоставленными учетными данными.');
@@ -28,8 +28,8 @@ describe('Тестирование формы логина и пароля на 
         cy.reload();
         cy.get('.header-bottom__right--link').click();
         cy.get('.auth-form__submit').should('be.disabled')
-        cy.get('.auth-form > form > [type="email"]').type('sharmazanyan@mail.ru');
-        cy.get('.auth-form > form > [type="password"]').type('ASDfgh123');
+        cy.get('.auth-form > form > [type="email"]').type('некорректный_логин');
+        cy.get('.auth-form > form > [type="password"]').type('корректный_пароль');
         cy.get('.auth-form__submit').should('not.be.disabled');
         cy.get('.auth-form__submit').click();
         cy.contains('Невозможно войти с предоставленными учетными данными.');
@@ -40,8 +40,8 @@ describe('Тестирование формы логина и пароля на 
         cy.reload();
         cy.get('.header-bottom__right--link').click();
         cy.get('.auth-form__submit').should('be.disabled')
-        cy.get('.auth-form > form > [type="email"]').type('sharmazanyan@mail.ru');
-        cy.get('.auth-form > form > [type="password"]').type('ASDfgh');
+        cy.get('.auth-form > form > [type="email"]').type('некорректный_логин');
+        cy.get('.auth-form > form > [type="password"]').type('некорректный_пароль');
         cy.get('.auth-form__submit').should('not.be.disabled');
         cy.get('.auth-form__submit').click();
         cy.contains('Невозможно войти с предоставленными учетными данными.');
@@ -52,8 +52,8 @@ describe('Тестирование формы логина и пароля на 
         cy.reload();
         cy.get('.header-bottom__right--link').click();
         cy.get('.auth-form__submit').should('be.disabled')
-        cy.get('.auth-form > form > [type="email"]').type('sharmazanyan00@ma.ru');
-        cy.get('.auth-form > form > [type="password"]').type('ASDfgh123');
+        cy.get('.auth-form > form > [type="email"]').type('невалидный_логин');
+        cy.get('.auth-form > form > [type="password"]').type('корректный_пароль');
         cy.get('.auth-form__submit').should('not.be.disabled');
         cy.get('.auth-form__submit').click();
         cy.contains('Невозможно войти с предоставленными учетными данными.');
@@ -67,7 +67,7 @@ describe('Тестирование формы логина и пароля на 
         cy.get('.auth-page__form > :nth-child(2) > a').click();
         cy.contains('Смена пароля');
         cy.get('.form__button').should('be.disabled')
-        cy.get('.form__field').type('sharmazanyan00@mail.ru');
+        cy.get('.form__field').type('валидный_логин');
         cy.get('.form__button').should('not.be.disabled')
         cy.get('.form__button').click();
         cy.contains('Письмо отправлено');
@@ -81,7 +81,7 @@ describe('Тестирование формы логина и пароля на 
         cy.get('.auth-page__form > :nth-child(2) > a').click();
         cy.contains('Смена пароля');
         cy.get('.form__button').should('be.disabled')
-        cy.get('.form__field').type('dean.sharm@gmailcom');
+        cy.get('.form__field').type('невалидный_логин');
         cy.get('.form__button').should('be.disabled')
     })
 })
